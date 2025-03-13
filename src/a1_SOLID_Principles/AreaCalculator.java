@@ -1,6 +1,6 @@
 package a1_SOLID_Principles;
 
-import Abstactions.IShape;
+import a1_SOLID_Principles.Absractions.IShape;
 import a1_SOLID_Principles.Absractions.IAreaCalculator;
 
 import java.util.List;

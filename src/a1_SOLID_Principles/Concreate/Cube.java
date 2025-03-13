@@ -1,5 +1,5 @@
 package a1_SOLID_Principles.Concreate;
-import Abstactions.IThreeDimensionalShape;
+import a1_SOLID_Principles.Absractions.IThreeDimensionalShape;
 
 public class Cube implements IThreeDimensionalShape {
     private final int length;

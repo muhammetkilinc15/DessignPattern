@@ -1,12 +1,14 @@
 package a1_SOLID_Principles;
 
-import Abstactions.IShape;
-import Concreate.Circle;
-import Concreate.Cube;
-import Concreate.Square;
+import a1_SOLID_Principles.Absractions.IShape;
 import a1_SOLID_Principles.Absractions.IAreaCalculator;
+import a1_SOLID_Principles.Concreate.Circle;
+import a1_SOLID_Principles.Concreate.Square;
+import a1_SOLID_Principles.Concreate.Cube;
+import a1_SOLID_Principles.ShapePrinter;
 
 import java.util.List;
+
 
 public class Main {
     public static void main(String[] args) {

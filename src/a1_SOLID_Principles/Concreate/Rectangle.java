@@ -1,6 +1,6 @@
 package a1_SOLID_Principles.Concreate;
 
-import Abstactions.IShape;
+import a1_SOLID_Principles.Absractions.IShape;
 
 public class Rectangle  implements IShape {
     private final int length;
