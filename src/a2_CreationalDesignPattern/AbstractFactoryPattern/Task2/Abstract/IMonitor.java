@@ -1,4 +1,4 @@
-package a2_CreationalDesignPattern.Task2.Abstract;
+package a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Abstract;
 
 public interface IMonitor extends IComponent{
 }

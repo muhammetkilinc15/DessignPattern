@@ -1,9 +1,11 @@
-package a2_CreationalDesignPattern.Task2.Store;
+package a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Store;
 
-import a2_CreationalDesignPattern.Task2.Abstract.IGpu;
-import a2_CreationalDesignPattern.Task2.Abstract.IMonitor;
-import a2_CreationalDesignPattern.Task2.AsusGpu;
-import a2_CreationalDesignPattern.Task2.AsusMonitor;
+
+import a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Abstract.IGpu;
+import a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Abstract.IMonitor;
+import a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Items.AsusGpu;
+import a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Items.AsusMonitor;
+
 
 public class AsusStore extends Company{
     @Override

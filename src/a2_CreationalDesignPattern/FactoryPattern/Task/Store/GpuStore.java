@@ -1,6 +1,6 @@
-package a2_CreationalDesignPattern.Task.Store;
+package a2_CreationalDesignPattern.FactoryPattern.Task.Store;
 
-import a2_CreationalDesignPattern.Task.Abstract.IComponent;
+import a2_CreationalDesignPattern.FactoryPattern.Task.Abstract.IComponent;
 
 public abstract class GpuStore  {
     public  abstract IComponent createGpu();

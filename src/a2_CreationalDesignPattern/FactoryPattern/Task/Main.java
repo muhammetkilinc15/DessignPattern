@@ -1,9 +1,9 @@
-package a2_CreationalDesignPattern.Task;
+package a2_CreationalDesignPattern.FactoryPattern.Task;
 
-import a2_CreationalDesignPattern.Task2.AsusGpu;
-import a2_CreationalDesignPattern.Task2.AsusMonitor;
-import a2_CreationalDesignPattern.Task2.MsiGpu;
-import a2_CreationalDesignPattern.Task2.MsiMonitor;
+import a2_CreationalDesignPattern.FactoryPattern.Task.Items.AsusGpu;
+import a2_CreationalDesignPattern.FactoryPattern.Task.Items.AsusMonitor;
+import a2_CreationalDesignPattern.FactoryPattern.Task.Items.MsiGpu;
+import a2_CreationalDesignPattern.FactoryPattern.Task.Items.MsiMonitor;
 
 public class Main {
     public static void main(String[] args) {

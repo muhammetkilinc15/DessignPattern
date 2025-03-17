@@ -1,9 +1,8 @@
-package a2_CreationalDesignPattern.Task2;
+package a2_CreationalDesignPattern.AbstractFactoryPattern.Task2;
 
-import a2_CreationalDesignPattern.Task2.Abstract.IComponent;
-import a2_CreationalDesignPattern.Task2.Abstract.IGpu;
-import a2_CreationalDesignPattern.Task2.Store.AsusStore;
-import a2_CreationalDesignPattern.Task2.Store.Company;
+
+import a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Store.AsusStore;
+import a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Store.Company;
 
 public class Main {
 
@@ -11,9 +10,12 @@ public class Main {
         Company asusCompany = new AsusStore();
         Company msiCompany = new AsusStore();
 
-        IComponent gpu = asusCompany.createGpu();
+        asusCompany.createGpu().assemble(); // Asus Gpu Assembled
+        asusCompany.createMonitor().assemble(); // Asus Monitor Assembled
 
-        gpu.assemble();
+        msiCompany.createMonitor().assemble();
+        msiCompany.createGpu().assemble();
+
 
     }
 }

@@ -1,11 +1,11 @@
-package a2_CreationalDesignPattern.Task2.Store;
+package a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Store;
+import a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Abstract.IGpu;
+import a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Abstract.IMonitor;
+import a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Items.MsiGpu;
+import a2_CreationalDesignPattern.AbstractFactoryPattern.Task2.Items.MsiMonitor;
 
-import a2_CreationalDesignPattern.Task2.Abstract.IGpu;
-import a2_CreationalDesignPattern.Task2.Abstract.IMonitor;
-import a2_CreationalDesignPattern.Task2.MsiGpu;
-import a2_CreationalDesignPattern.Task2.MsiMonitor;
 
-public class MsiStore extends Company{
+public class MsiStore extends Company {
     @Override
     public IGpu createGpu() {
         return new MsiGpu();

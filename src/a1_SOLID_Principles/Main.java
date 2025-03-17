@@ -5,7 +5,6 @@ import a1_SOLID_Principles.Absractions.IAreaCalculator;
 import a1_SOLID_Principles.Concreate.Circle;
 import a1_SOLID_Principles.Concreate.Square;
 import a1_SOLID_Principles.Concreate.Cube;
-import a1_SOLID_Principles.ShapePrinter;
 
 import java.util.List;
 
