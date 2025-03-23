@@ -12,7 +12,7 @@ Bu proje, yazılım mühendisliğinde yaygın olarak kullanılan **Tasarım Dese
     - [Interface Segregation Principle](#interface-segregation-principle-isp)
     - [Dependency Inversion Principle](#dependency-inversion-principle-dip)
 - [Tasarım Desenleri](#tasarım-desenleri)
-    - [Creational Desenler](#creational-desenler)
+    - [Creational Desenler](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a2_CreationalDesignPattern)
     - [Structural Desenler](#structural-desenler)
     - [Behavioral Desenler](#behavioral-desenler)
 - [Kullanım](#kullanım)
@@ -45,7 +45,7 @@ Bu grup, nesne yaratma ile ilgili desenleri içerir. Amaç, nesne oluşturma sü
 
 - **Singleton**
 - **Factory Method**
-- **Abstract Factory**: [Kaynak Kodu](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a2_CreationalDesignPattern/AbstractFactoryPattern)
+- [Abstract Factory](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a2_CreationalDesignPattern/AbstractFactoryPattern)
 - **Builder**
 - **Prototype**
 
