@@ -45,7 +45,7 @@ Bu grup, nesne yaratma ile ilgili desenleri içerir. Amaç, nesne oluşturma sü
 
 - **Singleton**
 - **Factory Method**
-- **Abstract Factory**
+- **Abstract Factory**: [Kaynak Kodu](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a2_CreationalDesignPattern/AbstractFactoryPattern)
 - **Builder**
 - **Prototype**
 
