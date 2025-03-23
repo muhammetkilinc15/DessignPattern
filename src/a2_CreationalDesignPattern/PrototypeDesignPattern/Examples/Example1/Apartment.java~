@@ -1,0 +1,74 @@
+package Proteteype.Example1;
+
+abstract class Building {
+    public int countOfWindows;
+    public int buildYear;
+    public String color;
+
+    public Building(int countOfWindows, int buildYear, String color) {
+        this.countOfWindows = countOfWindows;
+        this.buildYear = buildYear;
+        this.color = color;
+    }
+
+    public Building(Building building) {
+        this.countOfWindows = building.countOfWindows;
+        this.buildYear = building.buildYear;
+        this.color = building.color;
+    }
+
+    public abstract Building clone();
+}
+
+public class Apartment extends Building {
+    public int floorCount;
+
+    public Apartment(int countOfWindows, int buildYear, String color, int floorCount) {
+        super(countOfWindows, buildYear, color);
+        this.floorCount = floorCount;
+    }
+
+    public Apartment(Apartment apartment) {
+        super(apartment);
+        this.floorCount = apartment.floorCount;
+    }
+
+    @Override
+    public Apartment clone() {
+        return new Apartment(this);
+    }
+}
+
+class Villa extends Building {
+    public int gardenSize;
+
+    public Villa(int countOfWindows, int buildYear, String color, int gardenSize) {
+        super(countOfWindows, buildYear, color);
+        this.gardenSize = gardenSize;
+    }
+    public Villa (Villa villa){
+        super(villa);
+        this.gardenSize = villa.gardenSize;
+    }
+    @Override
+    public Villa clone() {
+        return new Villa(this);
+    }
+
+}
+
+class ApartmentMain {
+    public static void main(String[] args) {
+        Building apartment1 = new Apartment(4, 2020, "White", 5);
+        Building apartment2 = apartment1.clone();
+
+        Building villa1 = new Villa(10, 2010, "Yellow", 100);
+        Building villa2 = villa1.clone();
+
+        System.out.println(apartment1.countOfWindows + " " + apartment1.buildYear + " " + apartment1.color + " " + ((Apartment) apartment1).floorCount);
+        System.out.println(apartment2.countOfWindows + " " + apartment2.buildYear + " " + apartment2.color + " " + ((Apartment) apartment2).floorCount);
+
+        System.out.println(villa1.countOfWindows + " " + villa1.buildYear + " " + villa1.color + " " + ((Villa) villa1).gardenSize);
+        System.out.println(villa2.countOfWindows + " " + villa2.buildYear + " " + villa2.color + " " + ((Villa) villa2).gardenSize);
+    }
+}
