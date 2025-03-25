@@ -13,7 +13,7 @@ Bu proje, yazılım mühendisliğinde yaygın olarak kullanılan **Tasarım Dese
     - [Dependency Inversion Principle](#dependency-inversion-principle-dip)
 - [Tasarım Desenleri](#tasarım-desenleri)
     - [Creational Desenler](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a2_CreationalDesignPattern)
-    - [Structural Desenler](#structural-desenler)
+    - [Structural Desenler](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a3_structuralDesignPattern)
     - [Behavioral Desenler](#behavioral-desenler)
 - [Kullanım](#kullanım)
 - [Katkı](#katkı)
