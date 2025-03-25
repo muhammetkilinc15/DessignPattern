@@ -5,7 +5,7 @@ Bu proje, yazılım mühendisliğinde yaygın olarak kullanılan **Tasarım Dese
 ## İçindekiler
 
 - [Giriş](#giriş)
-- [SOLID Prensipleri]([#solid-prensipleri](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a1_SOLID_Principles))
+- [SOLID Prensipleri](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a1_SOLID_Principles)
     - [Single Responsibility Principle](#single-responsibility-principle-srp)
     - [Open/Closed Principle](#openclosed-principle-ocp)
     - [Liskov Substitution Principle](#liskov-substitution-principle-lsp)
