@@ -6,11 +6,6 @@ Bu proje, yazılım mühendisliğinde yaygın olarak kullanılan **Tasarım Dese
 
 - [Giriş](#giriş)
 - [SOLID Prensipleri](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a1_SOLID_Principles)
-    - [Single Responsibility Principle](#single-responsibility-principle-srp)
-    - [Open/Closed Principle](#openclosed-principle-ocp)
-    - [Liskov Substitution Principle](#liskov-substitution-principle-lsp)
-    - [Interface Segregation Principle](#interface-segregation-principle-isp)
-    - [Dependency Inversion Principle](#dependency-inversion-principle-dip)
 - [Tasarım Desenleri](#tasarım-desenleri)
     - [Creational Desenler](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a2_CreationalDesignPattern)
     - [Structural Desenler](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a3_structuralDesignPattern)
@@ -44,18 +39,18 @@ Bu projede aşağıdaki tasarım desenleri ele alınmaktadır:
 Bu grup, nesne yaratma ile ilgili desenleri içerir. Amaç, nesne oluşturma sürecini soyutlayarak esneklik kazandırmaktır.
 
 - **Singleton**
-- **Factory Method**
+- [Factory](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a2_CreationalDesignPattern/FactoryPattern) 
 - [Abstract Factory](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a2_CreationalDesignPattern/AbstractFactoryPattern)
-- **Builder**
-- **Prototype**
+- [Builder](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a2_CreationalDesignPattern/BuilderPattern)
+- [Prototype](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a2_CreationalDesignPattern/PrototypeDesignPattern)
 
 ### Structural Desenler
 Yapısal desenler, sınıfların ve nesnelerin birbirleriyle nasıl ilişkilendirileceği üzerine odaklanır. Amaç, yazılımın yapısını modüler hale getirmektir.
 
-- **Adapter**
-- **Bridge**
+- [Adapter](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a3_structuralDesignPattern/AdapterPattern)
+- [Bridge](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a3_structuralDesignPattern/BridgePattern)
 - **Composite**
-- **Decorator**
+- [Decorator](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a3_structuralDesignPattern/DecoratorPattern)
 - **Facade**
 - **Flyweight**
 - **Proxy**
