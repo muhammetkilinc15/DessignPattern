@@ -14,26 +14,7 @@ Bu proje, yazılım mühendisliğinde yaygın olarak kullanılan **Tasarım Dese
 - [Katkı](#katkı)
 - [Lisans](#lisans)
 
-## Giriş
-
-Yazılım geliştirme sürecinde, projelerin daha sürdürülebilir, modüler ve anlaşılır olması için bazı tasarım prensiplerine ve desenlerine ihtiyaç duyulur. Bu proje, **Tasarım Desenleri** ve **SOLID Prensipleri** üzerinde durarak, yazılım geliştirme sürecini daha verimli hale getirmeyi amaçlamaktadır.
-
-### Neden SOLID?
-SOLID prensipleri, yazılım tasarımını düzenlemeye yönelik güçlü kurallardır. Bu prensipler, yazılımın esnekliğini artırır, kod tekrarını önler ve bakım sürecini kolaylaştırır. SOLID prensipleri şunlardır:
-
-1. **Single Responsibility Principle (SRP)**: Her sınıfın yalnızca bir sorumluluğu olmalıdır.
-2. **Open/Closed Principle (OCP)**: Yazılım varlıkları (sınıflar, fonksiyonlar, modüller) uzatılabilir ancak değiştirilmemelidir.
-3. **Liskov Substitution Principle (LSP)**: Alt sınıflar, üst sınıfların yerine kullanılabilir olmalıdır.
-4. **Interface Segregation Principle (ISP)**: Bir sınıf, kullanmadığı bir interface’e bağlı olmamalıdır.
-5. **Dependency Inversion Principle (DIP)**: Yüksek seviyeli modüller, düşük seviyeli modüllere bağımlı olmamalıdır. İkisi de soyutlamalara bağımlı olmalıdır.
-
-Her bir SOLID prensibi, yazılım projelerinde daha temiz, anlaşılır ve sürdürülebilir bir yapı inşa etmemize yardımcı olur.
-
 ## Tasarım Desenleri
-
-Tasarım desenleri, yazılım geliştirme sürecinde karşılaşılan yaygın problemleri çözmek için geliştirilmiş, tekrar kullanılabilir çözüm yollarıdır. Desenler, belirli bir problem durumunda, en iyi çözümü sunmak için bir "şablon" görevi görür.
-
-Bu projede aşağıdaki tasarım desenleri ele alınmaktadır:
 
 ### Creational Desenler
 Bu grup, nesne yaratma ile ilgili desenleri içerir. Amaç, nesne oluşturma sürecini soyutlayarak esneklik kazandırmaktır.
