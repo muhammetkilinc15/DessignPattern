@@ -44,7 +44,7 @@ class DellLaptop extends LaptopDecorator {
 
     public void CloseLid() {
         super.CloseLid();
-        System.out.println("Dell laptop is sleeping");
+        System.out.println();
     }
 }
 

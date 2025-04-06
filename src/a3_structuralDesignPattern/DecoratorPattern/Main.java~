@@ -3,7 +3,7 @@ package a3_structuralDesignPattern.DecoratorPattern;
 public class Main {
     public static void main(String[] args) {
         DellLaptop dellLaptop = new DellLaptop();
-        dellLaptop.OpenLid();
+        dellLaptop.Start();
 
         AsusLaptop asusLaptop = new AsusLaptop();
 
