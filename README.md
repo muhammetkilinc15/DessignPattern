@@ -3,8 +3,6 @@
 Bu proje, yazılım mühendisliğinde yaygın olarak kullanılan **Tasarım Desenleri** (Design Patterns) ve **SOLID Prensipleri** üzerine odaklanmaktadır. Bu proje, yazılım geliştirme sürecinde karşılaşılan yaygın problemlere çözüm sunmayı amaçlayan tasarım desenlerini ve her bir deseni uygularken dikkat edilmesi gereken **SOLID** prensiplerini açıklamaktadır.
 
 ## İçindekiler
-
-- [Giriş](#giriş)
 - [SOLID Prensipleri](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a1_SOLID_Principles)
 - [Tasarım Desenleri](#tasarım-desenleri)
     - [Creational Desenler](https://github.com/muhammetkilinc15/DessignPattern/tree/Master/src/a2_CreationalDesignPattern)
