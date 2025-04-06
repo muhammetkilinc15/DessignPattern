@@ -1,0 +1,4 @@
+package a3_structuralDesignPattern.BridgePattern;
+
+public class LGTV {
+}

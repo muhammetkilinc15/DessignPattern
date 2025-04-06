@@ -1,0 +1,8 @@
+package a3_structuralDesignPattern.BridgePattern;
+
+public class SmartRemoteControl extends RemoteControl{
+    public SmartRemoteControl(ITV tv) {
+        super(tv);
+    }
+
+}
