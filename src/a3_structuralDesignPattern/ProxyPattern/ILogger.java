@@ -1,0 +1,84 @@
+package a3_structuralDesignPattern.ProxyPattern;
+
+// Proxy Design Pattern - Structural Design Pattern
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+class FileLogger implements ILogger {
+    private final String filePath = "log.txt";
+    @Override
+    public void log(String message) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            writer.write(message);
+            writer.newLine();
+        } catch (IOException e) {
+            System.err.println("Log writing failed: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void log(List<String> messages) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            for (String message : messages) {
+                writer.write(message);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Log writing failed: " + e.getMessage());
+        }
+    }
+}
+
+class BufferedFileLogger implements ILogger {
+    private final FileLogger fileLogger;
+    private final int BufferSize;
+    private final List<String> buffer;
+
+    public BufferedFileLogger(int BufferSize) {
+        this.BufferSize = BufferSize;
+        this.buffer = new ArrayList<>(BufferSize);
+        this.fileLogger = new FileLogger();
+    }
+
+    @Override
+    public void log(String message) {
+        if (buffer.size() > BufferSize) {
+            fileLogger.log(buffer); // Write logs to file
+            buffer.clear(); // Clear logs
+        }
+        buffer.add(message);
+    }
+
+    @Override
+    public void log(List<String> messages) {
+        fileLogger.log(messages);
+    }
+}
+
+public interface ILogger {
+    void log(String message);
+    void log(List<String> messages);
+}
+
+class Main {
+    public static void main(String[] args) {
+       ILogger logger = new BufferedFileLogger(5);
+       logger.log("Message 1");
+       logger.log("Message 2");
+       logger.log("Message 3");
+       logger.log("Message 4");
+       logger.log("Message 5");
+       logger.log("Message 6");
+       logger.log("Message 7");
+       logger.log("Message 8");
+       logger.log("Message 9");
+
+       // logger.log(List.of("Message 7", "Message 8", "Message 9"));
+
+    }
+}
