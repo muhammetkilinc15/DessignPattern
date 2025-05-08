@@ -1,0 +1,79 @@
+package a4_BehaivoralDesignPattern.ChainOfResponsibility.Task;
+
+public abstract class Approver {
+    protected Approver nextApprover;
+
+    public void setNextApprover(Approver nextApprover) {
+        this.nextApprover = nextApprover;
+    }
+
+    public abstract void approveRequest(double amount);
+}
+
+class Manager extends Approver {
+
+    @Override
+    public void approveRequest(double amount) {
+        if (amount < 1000) {
+            System.out.println("Manager approved request for " + amount);
+        } else if (nextApprover != null) {
+            nextApprover.approveRequest(amount);
+        }else{
+            System.out.println("Issue not handled.");
+        }
+    }
+}
+class Director extends Approver {
+    @Override
+    public void approveRequest(double amount) {
+        if (amount < 10000) {
+            System.out.println("Director approved request for " + amount);
+        } else if (nextApprover != null) {
+            nextApprover.approveRequest(amount);
+        }else{
+            System.out.println("Issue not handled.");
+        }
+    }
+}
+class VicePresident extends Approver {
+    @Override
+    public void approveRequest(double amount) {
+        if (amount < 50000) {
+            System.out.println("Vice President approved request for " + amount);
+        } else if (nextApprover != null) {
+            nextApprover.approveRequest(amount);
+        } else {
+            System.out.println("Issue not handled.");
+        }
+    }
+}
+class President extends Approver {
+    @Override
+    public void approveRequest(double amount) {
+        if (amount > 50000) {
+            System.out.println("President approved request for " + amount);
+        } else if (nextApprover != null) {
+            nextApprover.approveRequest(amount);
+        } else {
+            System.out.println("Issue not handled.");
+        }
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Approver manager = new Manager();
+        Approver director = new Director();
+        Approver vicePresident = new VicePresident();
+        Approver president = new President();
+
+        manager.setNextApprover(director);
+        director.setNextApprover(vicePresident);
+        vicePresident.setNextApprover(president);
+
+        manager.approveRequest(500);
+        manager.approveRequest(7500);
+        manager.approveRequest(20000);
+        manager.approveRequest(100000);
+
+    }
+}

@@ -1,0 +1,4 @@
+package a4_BehaivoralDesignPattern.ChainOfResponsibility.Task;
+
+public class BaseApprover {
+}
