@@ -5,30 +5,11 @@ public interface IOrderState {
     void Previous(Order order);
     void PrintStatus();
 }
-
 record NewOrderState() implements IOrderState {
 
     @Override
     public void Next(Order order) {
-        order.State = new ProcessingState();
-    }
-
-    @Override
-    public void Previous(Order order) {
-        System.out.println("This is initial state");
-    }
-
-    @Override
-    public void PrintStatus() {
-        System.out.println("Order is placed");
-    }
-}
-
-record ProcessingState() implements IOrderState {
-
-    @Override
-    public void Next(Order order) {
-    order.State = new  NewOrderState();
+    order.State = new OrderProcessingState
     }
 
     @Override
