@@ -5,8 +5,11 @@ import java.util.*;
 
 public interface IIterator<T> {
     boolean hasNext();
+
     T next();
+
     void reset();          // Iterasyonu başa alma
+
     int currentPosition(); // Geçerli konumu döner
 }
 
@@ -81,18 +84,5 @@ class Product {
 
 class Client {
     public static void main(String[] args) {
-        ConcreteCollection<Product> products = new ConcreteCollection<>();
-
-        products.add(new Product("Laptop", 1000.0));
-        products.add(new Product("Tablet", 500.0));
-        products.add(new Product("Smartphone", 800.0));
-        products.add(new Product("Monitor", 300.0));
-
-        IIterator<Product> iterator = products.createIterator();
-
-        while (iterator.hasNext()) {
-            Product product = iterator.next();
-            System.out.println("Product: " + product.name + ", Price: $" + product.price);
-        }
     }
 }
