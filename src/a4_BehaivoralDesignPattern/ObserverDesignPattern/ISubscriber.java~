@@ -1,0 +1,117 @@
+package a4_BehaivoralDesignPattern.ObserverDesignPattern;
+
+import java.util.*;
+
+// Ürün (Product) sınıfı
+class Product {
+    public String name;
+    public double price;
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product [name=" + name + ", price=" + price + "]";
+    }
+}
+
+// Subscriber Interface
+public interface ISubscriber {
+    void StockUpdate(Product product);
+}
+
+// Concreate Subscriber implementation
+class ConcreateSubscriber implements ISubscriber {
+    public String fullName;
+
+    public ConcreateSubscriber(String fullName) {
+        this.fullName = fullName;
+    }
+
+    @Override
+    public void StockUpdate(Product product) {
+        System.out.printf("%s %s is in stock\n", fullName, product.toString());
+    }
+}
+
+// Observable arayüzü
+interface IPublisher {
+    void Register(ISubscriber observer, Product product);
+    void UnRegister(ISubscriber observer, Product product);
+    void NotifyAll(Product product);
+    void NotifyForProductName(String productName);
+}
+
+
+// Observable implementasyonu
+class MicroSoft implements IPublisher {
+    // Her ürün için gözlemci listesi tutulur
+    private final Map<Product, List<ISubscriber>> observers = new HashMap<>();
+
+    @Override
+    public void Register(ISubscriber observer, Product product) {
+        observers.computeIfAbsent(product, k -> new ArrayList<>()).add(observer);
+    }
+
+    @Override
+    public void UnRegister(ISubscriber observer, Product product) {
+        List<ISubscriber> list = observers.get(product);
+        if (list != null) {
+            list.remove(observer);
+            if (list.isEmpty()) {
+                observers.remove(product);
+            }
+        }
+    }
+
+    @Override
+    public void NotifyAll(Product product) {
+        List<ISubscriber> list = observers.get(product);
+        if (list != null) {
+            for (ISubscriber observer : list) {
+                observer.StockUpdate(product);
+            }
+        }
+    }
+
+    @Override
+    public void NotifyForProductName(String productName) {
+        for (Map.Entry<Product, List<ISubscriber>> entry : observers.entrySet()) {
+            if (entry.getKey().name.equalsIgnoreCase(productName)) {
+                for (ISubscriber observer : entry.getValue()) {
+                    observer.StockUpdate(entry.getKey());
+                }
+            }
+        }
+    }
+}
+
+// Client
+class Client {
+    public static void main(String[] args) {
+        Product product = new Product("Github Copilot Pro", 2200);
+        Product product2 = new Product("Microsoft 365", 3600);
+        Product product3 = new Product("Azure DevOps", 5990);
+
+        ConcreateSubscriber observer1 = new ConcreateSubscriber("Muhammet Kılınc");
+        ConcreateSubscriber observer2 = new ConcreateSubscriber("Beyza Akkoc");
+        ConcreateSubscriber observer3 = new ConcreateSubscriber("Mehmet Güler");
+
+        MicroSoft amazon = new MicroSoft();
+
+        // Her gözlemciyi istediği ürüne kaydediyoruz
+        amazon.Register(observer1, product);
+        amazon.Register(observer2, product2);
+        amazon.Register(observer3, product2);
+        amazon.Register(observer1, product3);
+
+        amazon.NotifyAll(product3);
+
+
+
+       // amazon.NotifyForProductName("Microsoft 365");
+    }
+}

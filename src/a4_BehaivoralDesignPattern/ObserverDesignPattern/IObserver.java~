@@ -1,0 +1,109 @@
+package a4_BehaivoralDesignPattern.ObserverDesignPattern;
+
+import java.util.*;
+
+// Ürün (Product) sınıfı
+class Product {
+    public String name;
+    public double price;
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+}
+
+// Observer arayüzü
+public interface IObserver {
+    void StockUpdate(Product product);
+}
+
+// Gözlemci (Observer) implementasyonu
+class MyObserver implements IObserver {
+    public String fullName;
+
+    public MyObserver(String fullName) {
+        this.fullName = fullName;
+    }
+
+    @Override
+    public void StockUpdate(Product product) {
+        System.out.printf("%s, Product %s, %.2f is in stock now\n", fullName, product.name, product.price);
+    }
+}
+
+// Observable arayüzü
+interface IObservable {
+    void Register(IObserver observer, Product product);
+    void UnRegister(IObserver observer, Product product);
+    void NotifyAll(Product product);
+    void NotifyForProductName(String productName);
+}
+
+// Observable implementasyonu
+class MicroSoft implements IObservable {
+    // Her ürün için gözlemci listesi tutulur
+    private final Map<Product, List<IObserver>> observers = new HashMap<>();
+
+    @Override
+    public void Register(IObserver observer, Product product) {
+        observers.computeIfAbsent(product, k -> new ArrayList<>()).add(observer);
+    }
+
+    @Override
+    public void UnRegister(IObserver observer, Product product) {
+        List<IObserver> list = observers.get(product);
+        if (list != null) {
+            list.remove(observer);
+            if (list.isEmpty()) {
+                observers.remove(product);
+            }
+        }
+    }
+
+    @Override
+    public void NotifyAll(Product product) {
+        List<IObserver> list = observers.get(product);
+        if (list != null) {
+            for (IObserver observer : list) {
+                observer.StockUpdate(product);
+            }
+        }
+    }
+
+    @Override
+    public void NotifyForProductName(String productName) {
+        for (Map.Entry<Product, List<IObserver>> entry : observers.entrySet()) {
+            if (entry.getKey().name.equalsIgnoreCase(productName)) {
+                for (IObserver observer : entry.getValue()) {
+                    observer.StockUpdate(entry.getKey());
+                }
+            }
+        }
+    }
+}
+
+// Client
+class Client {
+    public static void main(String[] args) {
+        Product product = new Product("Github Copilot Pro", 3200);
+        Product product2 = new Product("Microsoft 365", 5999);
+
+        MyObserver observer1 = new MyObserver("Muhammet Kılınc");
+        MyObserver observer2 = new MyObserver("Beyza Akkoc");
+        MyObserver observer3 = new MyObserver("Mehmet Güler");
+
+        MicroSoft amazon = new MicroSoft();
+
+        // Her gözlemciyi istediği ürüne kaydediyoruz
+        amazon.Register(observer1, product);
+        amazon.Register(observer2, product2);
+        amazon.Register(observer3, product2);
+
+        amazon.NotifyAll(product2);
+
+
+
+       // amazon.NotifyForProductName("Microsoft 365");
+    }
+}
