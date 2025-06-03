@@ -10,8 +10,11 @@ abstract class BaseComponent {
     protected BaseComponent(Mediator mediator) {
         this._mediator = mediator;
     }
-
     public void setMediator(Mediator mediator) {
+        this._mediator = mediator;
+    }
+
+    public void SetMediator(Mediator mediator) {
         this._mediator = mediator;
     }
 }
@@ -60,12 +63,11 @@ class ConcreteMediator implements Mediator {
     public void notify(Object sender, String event) {
         if (event.equals("AEvent")) {
             System.out.println("Mediator reacts on A and triggers following operations:");
-            // Sonsuz döngüyü önlemek için sadece doAnotherAction() çağırıyoruz
-            this._componentB.doAnotherAction();
+            this._componentB.doB();
         }
         if (event.equals("BEvent")) {
             System.out.println("Mediator reacts on B and triggers following operations:");
-            // Sonsuz döngüyü önlemek için sadece doAnotherAction() çağırıyoruz
+            this._componentA.doA();
             this._componentA.doAnotherAction();
         }
     }
@@ -78,15 +80,6 @@ class MediatorDemo {
 
         ConcreteMediator mediator = new ConcreteMediator(componentA, componentB);
 
-        System.out.println("=== Test 1: AEvent ===");
         mediator.notify(componentA, "AEvent");
-
-        System.out.println("\n=== Test 2: BEvent ===");
-        mediator.notify(componentB, "BEvent");
-
-        System.out.println("\n=== Test 3: Direct component actions ===");
-        componentA.doA();
-        System.out.println();
-        componentB.doB();
     }
 }
