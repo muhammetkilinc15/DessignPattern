@@ -1,3 +1,5 @@
+package a4_BehaivoralDesignPattern.VisitorDesignPattern;
+
 public class Clothing implements Product {
     private String brand;
     private double price;

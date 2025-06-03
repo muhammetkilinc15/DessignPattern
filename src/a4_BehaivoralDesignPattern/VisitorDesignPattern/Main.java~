@@ -11,7 +11,7 @@ public class Main {
 	private static final Logger logger = Logger.getLogger(Main.class.getName());
 	public static void main(String[] args) {
 
-		logger.log(Level.INFO, "Visitor Design Pattern main starting");
+		logger.log(Level.WARNING, "Visitor Design Pattern main starting");
 
 		List<Product> cart = List.of(
 	        new Book("Effective Java", 45.0),

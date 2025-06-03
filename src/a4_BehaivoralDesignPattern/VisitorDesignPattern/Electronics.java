@@ -1,3 +1,5 @@
+package a4_BehaivoralDesignPattern.VisitorDesignPattern;
+
 public class Electronics implements Product {
     private String name;
     private double price;
