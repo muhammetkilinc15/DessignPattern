@@ -7,6 +7,25 @@ package a4_BehaivoralDesignPattern.ChainOfResponsibility;
 import java.util.Random;
 
 
+// Request Object
+public class Order {
+    public String ProductName;
+    public int Quantity;
+    public double Price;
+
+    public Order(String productName, int quantity, double price) {
+        this.ProductName = productName;
+        this.Quantity = quantity;
+        this.Price = price;
+    }
+}
+
+// Abstract Handler
+interface IOrderHandler {
+    boolean Handle(Order order);
+    void SetNext(IOrderHandler handler);
+}
+
 class PaymentControl implements IOrderHandler {
     private  IOrderHandler nextHandler;
 
@@ -92,26 +111,6 @@ class StockControl implements IOrderHandler {
     }
 }
 
-// Abstract Handler
-interface IOrderHandler {
-    boolean Handle(Order order);
-    void SetNext(IOrderHandler handler);
-}
-
-public class Order {
-    public String ProductName;
-    public int Quantity;
-    public double Price;
-
-    public Order(String productName, int quantity, double price) {
-        this.ProductName = productName;
-        this.Quantity = quantity;
-        this.Price = price;
-    }
-
-    Order(){
-    }
-}
 
 class Main {
     public static void main(String[] args) {
@@ -124,7 +123,6 @@ class Main {
         stockControl.SetNext(paymentControl);
         paymentControl.SetNext(invoiceControl);
         invoiceControl.SetNext(shippingControl);
-
 
         Order order = new Order("Keyboard", 1, 100);
         stockControl.Handle(order);

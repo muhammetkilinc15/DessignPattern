@@ -7,6 +7,25 @@ package a4_BehaivoralDesignPattern.ChainOfResponsibility;
 import java.util.Random;
 
 
+// Request Object
+public class Order {
+    public String ProductName;
+    public int Quantity;
+    public double Price;
+
+    public Order(String productName, int quantity, double price) {
+        this.ProductName = productName;
+        this.Quantity = quantity;
+        this.Price = price;
+    }
+}
+
+// Abstract Handler
+interface IOrderHandler {
+    boolean Handle(Order order);
+    void SetNext(IOrderHandler handler);
+}
+
 class PaymentControl implements IOrderHandler {
     private  IOrderHandler nextHandler;
 
@@ -73,7 +92,6 @@ class ShippingControl implements IOrderHandler {
 }
 class StockControl implements IOrderHandler {
     private IOrderHandler nextHandler;
-
     public StockControl(IOrderHandler nextHandler) {
         this.nextHandler = nextHandler;
     }
@@ -93,38 +111,19 @@ class StockControl implements IOrderHandler {
     }
 }
 
-// Abstract Handler
-interface IOrderHandler {
-    boolean Handle(Order order);
-    void SetNext(IOrderHandler handler);
-}
-
-public class Order {
-    public String ProductName;
-    public int Quantity;
-    public double Price;
-
-    public Order(String productName, int quantity, double price) {
-        this.ProductName = productName;
-        this.Quantity = quantity;
-        this.Price = price;
-    }
-
-    Order(){
-    }
-}
 
 class Main {
     public static void main(String[] args) {
         IOrderHandler stockControl = new StockControl(null);
-        IOrderHandler paymentControl = new PaymentControl(stockControl);
-        IOrderHandler invoiceControl = new InvoiceControl(paymentControl);
-        IOrderHandler shippingControl = new ShippingControl(invoiceControl);
+        IOrderHandler paymentControl = new PaymentControl(null);
+        IOrderHandler invoiceControl = new InvoiceControl(null);
+        IOrderHandler shippingControl = new ShippingControl(null);
 
         // Set Chain of Responsibility
+        stockControl.SetNext(paymentControl);
+        paymentControl.SetNext(invoiceControl);
+        invoiceControl.SetNext(shippingControl);
         
-
-
         Order order = new Order("Keyboard", 1, 100);
         stockControl.Handle(order);
     }
