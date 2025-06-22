@@ -38,13 +38,16 @@ class ComponentB extends BaseComponent {
 
     public void doB() {
         System.out.println("ComponentB does B.");
-        _mediator.notify(this, "BEvent");
-    }
+      }
 
     public void doAnotherAction() {
         System.out.println("ComponentB does another action.");
+        _mediator.notify(this, "BEvent");
     }
 }
+
+
+
 
 class ConcreteMediator implements Mediator {
     private ComponentA _componentA;
