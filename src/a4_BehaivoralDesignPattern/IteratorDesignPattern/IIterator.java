@@ -6,8 +6,8 @@ import java.util.*;
 public interface IIterator<T> {
     boolean hasNext();
     T next();
-    void reset();          // Iterasyonu başa alma
-    int currentPosition(); // Geçerli konumu döner
+    void reset();
+    int currentPosition();
 }
 
 class ConcreteIterator<T> implements IIterator<T> {
