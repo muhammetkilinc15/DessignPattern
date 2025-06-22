@@ -3,7 +3,6 @@ package a4_BehaivoralDesignPattern.CommandDesignPattern.Example;
 // 1. Command Arayüzü
 public interface ICommand {
     void Execute();
-
     void Undo(); // İsteğe bağlı: geri alma işlemi
 }
 
