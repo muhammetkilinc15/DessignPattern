@@ -4,9 +4,6 @@ package a4_BehaivoralDesignPattern.ChainOfResponsibility;
 
 // StockControl -> Payment -> Invoice -> Shipping
 
-import java.util.Random;
-
-
 // Request Object
 public class Order {
     public String ProductName;
@@ -23,59 +20,60 @@ public class Order {
 // Abstract Handler
 interface IOrderHandler {
     boolean Handle(Order order);
+
     void SetNext(IOrderHandler handler);
 }
 
-class PaymentControl implements IOrderHandler {
-    private  IOrderHandler nextHandler;
-
-    public PaymentControl(IOrderHandler nextHandler) {
-        this.nextHandler = nextHandler;
-    }
-
-    @Override
-    public boolean Handle(Order order) {
-        System.out.println("Payment Control is checking...");
-        boolean paymentDone = true; // Check Payment Service
-        if (paymentDone && nextHandler != null)
-            return nextHandler.Handle(order);
-        return false;
-    }
-
-    @Override
-    public void SetNext(IOrderHandler handler) {
-    this.nextHandler = handler;
-    }
-
-}
-class InvoiceControl implements IOrderHandler {
-    private  IOrderHandler nextHandler;
-
-    public InvoiceControl(IOrderHandler nextHandler) {
-        this.nextHandler = nextHandler;
-    }
-
-    @Override
-    public boolean Handle(Order order) {
-        System.out.println("Invoice Control is checking...");
-        boolean invoiceDone = true;    // Check Invoice Service
-        if (invoiceDone && nextHandler != null)
-            return nextHandler.Handle(order);
-        return false;
-    }
+abstract class BaseOrderHandler implements IOrderHandler {
+    protected IOrderHandler nextHandler;
 
     @Override
     public void SetNext(IOrderHandler handler) {
         this.nextHandler = handler;
     }
-}
-class ShippingControl implements IOrderHandler {
-    private IOrderHandler nextHandler;
 
-    public ShippingControl(IOrderHandler nextHandler) {
-        this.nextHandler = nextHandler;
+    @Override
+    public boolean Handle(Order order) {
+        if (nextHandler != null)
+            return nextHandler.Handle(order);
+        return false;
     }
+}
 
+class StockControl extends BaseOrderHandler {
+    @Override
+    public boolean Handle(Order order) {
+        System.out.println("Stock Control is checking for " + order.ProductName);
+        boolean stockAvailable = true; // Check Stock Service
+        if (stockAvailable && nextHandler != null)
+            return nextHandler.Handle(order);
+        return false;
+    }
+}
+
+class PaymentControl extends BaseOrderHandler {
+    @Override
+    public boolean Handle(Order order) {
+        System.out.println("Payment control is verifying the order for " + order.ProductName + " with quantity " + order.Quantity + " at price $" + order.Price + "...");
+        boolean paymentDone = true; // Check Payment Service
+        if (paymentDone && nextHandler != null)
+            return nextHandler.Handle(order);
+        return false;
+    }
+}
+
+class InvoiceControl extends BaseOrderHandler {
+    @Override
+    public boolean Handle(Order order) {
+        System.out.println("Invoice Control is checking for " + order.ProductName);
+        boolean invoiceDone = true;    // Check Invoice Service
+        if (invoiceDone && nextHandler != null)
+            return nextHandler.Handle(order);
+        return false;
+    }
+}
+
+class ShippingControl extends BaseOrderHandler {
     @Override
     public boolean Handle(Order order) {
         System.out.println("Shipping Control is checking...");
@@ -84,40 +82,15 @@ class ShippingControl implements IOrderHandler {
             return nextHandler.Handle(order);
         return false;
     }
-
-    @Override
-    public void SetNext(IOrderHandler handler) {
-        this.nextHandler = handler;
-    }
-}
-class StockControl implements IOrderHandler {
-    private IOrderHandler nextHandler;
-    public StockControl(IOrderHandler nextHandler) {
-        this.nextHandler = nextHandler;
-    }
-
-    @Override
-    public boolean Handle(Order order) {
-        System.out.println("Stock Control is checking...");
-        boolean stockAvailable = true; // Check Stock Service
-        if (stockAvailable && nextHandler != null)
-            return nextHandler.Handle(order);
-        return false;
-    }
-
-    @Override
-    public void SetNext(IOrderHandler handler) {
-        this.nextHandler = handler;
-    }
 }
 
 
 class Main {
     public static void main(String[] args) {
-        IOrderHandler stockControl = new StockControl(null);
-        IOrderHandler paymentControl = new PaymentControl(null);
-        IOrderHandler invoiceControl = new InvoiceControl(null);
-        IOrderHandler shippingControl = new ShippingControl(null);
+        IOrderHandler stockControl = new StockControl();
+        IOrderHandler paymentControl = new PaymentControl();
+        IOrderHandler invoiceControl = new InvoiceControl();
+        IOrderHandler shippingControl = new ShippingControl();
 
         // Set Chain of Responsibility
         stockControl.SetNext(paymentControl);
